@@ -41,6 +41,9 @@ flutter:
   uses-material-design: true
   assets:
     - images/expertBanner.png
+    - images/expert01.jpg
+    - images/expert02.jpg
+    - images/expert03.jpg
     
   # To add assets to your application, add an assets section, like this:
   # assets:
