@@ -313,7 +313,8 @@ class ExpertListItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         child: new Image.asset(list.avatarName,
                             fit: BoxFit.cover),
-                      )),
+                      )
+                  ),
                 ],
             ),
           ),
