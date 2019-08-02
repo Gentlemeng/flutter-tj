@@ -1,5 +1,48 @@
 import 'package:flutter/material.dart';
+//专家列表类
+class ExpertList {
+  const ExpertList({
+    @required this.avatarName,
+    @required this.expertName,
+    @required this.title,
+    @required this.field,
+  })  : assert(avatarName != null),
+        assert(expertName != null),
+        assert(title != null),
+        assert(field != null);
 
+  final String avatarName;
+  final String expertName;
+  final String title;
+  final List field;
+}
+
+const List<ExpertList> lists = <ExpertList>[
+  ExpertList(
+    avatarName: "images/expert01.jpg",
+    expertName: "曹远征",
+    title: "中银研究有限公司董事长",
+    field: ["宏观经济", "货币金融", "国际问题"],
+  ),
+  ExpertList(
+    avatarName: "images/expert02.jpg",
+    expertName: "曹远征",
+    title: "中银研究有限公司董事长",
+    field: ["宏观经济", "货币金融", "国际问题"],
+  ),
+  ExpertList(
+    avatarName: "images/expert03.jpg",
+    expertName: "曹远征",
+    title: "中银研究有限公司董事长",
+    field: ["宏观经济", "货币金融", "国际问题"],
+  ),
+  ExpertList(
+    avatarName: "images/expert01.jpg",
+    expertName: "曹远征",
+    title: "中银研究有限公司董事长",
+    field: ["宏观经济", "货币金融", "国际问题"],
+  ),  
+];
 class ExpertPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -31,13 +74,12 @@ class ScaffoldRoute extends StatefulWidget {
   _ScaffoldRouteState createState() => _ScaffoldRouteState();
 }
 
-class _ScaffoldRouteState extends State<ScaffoldRoute>
-    with SingleTickerProviderStateMixin {
-  int _selectedIndex = 1;
-  TabController _tabController; //需要定义一个Controller
-  // List tabs = [ExpertRepPage(), ExpertVoicePage(), BozhiSignPage()];
-  List tabs = ['专家库', '专家之声', '博智宏观论坛'];
-  List tabsWidgets = [ExpertRepPage(), ExpertVoicePage(), BozhiSignPage()];
+class _ScaffoldRouteState extends State<ScaffoldRoute> with SingleTickerProviderStateMixin {
+    int _selectedIndex = 1;
+    TabController _tabController; //需要定义一个Controller
+    // List tabs = [ExpertRepPage(), ExpertVoicePage(), BozhiSignPage()];
+    List tabs = ['专家库', '专家之声', '博智宏观论坛'];
+    List tabsWidgets = [ExpertRepPage(), ExpertVoicePage(), BozhiSignPage()];
 
   @override
   void initState() {
@@ -83,25 +125,6 @@ class _ScaffoldRouteState extends State<ScaffoldRoute>
           );
         }).toList(),
       ),
-      // drawer: new MyDrawer(), //抽屉
-      // bottomNavigationBar: BottomNavigationBar(
-      //   // 底部导航
-      //   items: <BottomNavigationBarItem>[
-      //     BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.business), title: Text('Business')),
-      //     BottomNavigationBarItem(
-      //         icon: Icon(Icons.school), title: Text('School')),
-      //   ],
-      //   currentIndex: _selectedIndex,
-      //   fixedColor: Colors.blue,
-      //   onTap: _onItemTapped,
-      // ),
-      // floatingActionButton: FloatingActionButton(
-      //     //悬浮按钮
-      //     child: Icon(Icons.add),
-      //     onPressed: _onAdd
-      // ),
     );
   }
 
@@ -239,270 +262,16 @@ class _ExpertRep extends State<ExpertRepPage> {
               // padding: ,
               child: ListView(
                 padding: const EdgeInsets.all(2),
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child:
-                            //专家头像
-                            Column(
-                          children: <Widget>[
-                            Container(
-                                width: 100,
-                                height: 150,
-                                // decoration: BoxDecoration(
-                                //     // color: Colors.red
-                                // ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: new Image.asset('images/expert01.jpg',
-                                      fit: BoxFit.cover),
-                                )),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: //专家信息
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                //收藏
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("曹远征"),
-                                    Row(
-                                      children: <Widget>[
-                                        Icon(Icons.star_border),
-                                        Text("收藏")
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                //职位
-                                Row(
-                                  children: <Widget>[
-                                    Text("中银研究有限公司董事长")
-                                  ],
-                                ),
-                                //研究领域
-                                Row(
-                                  children: <Widget>[
-                                    Column(
-                                      children: <Widget>[
-                                        Text("宏观经济"),
-                                        // Text("货币金融"),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Text("货币金融"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Column(
-                                      children: <Widget>[
-                                        Text("宏观经济"),
-                                        // Text("货币金融"),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Text("货币金融"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-
-                              ],
-                            ),
-                          )
-                        )
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child:
-                            //专家头像
-                            Column(
-                          children: <Widget>[
-                            Container(
-                                width: 100,
-                                height: 150,
-                                // decoration: BoxDecoration(
-                                //     // color: Colors.red
-                                // ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: new Image.asset('images/expert01.jpg',
-                                      fit: BoxFit.cover),
-                                )),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: //专家信息
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                //收藏
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("曹远征"),
-                                    Row(
-                                      children: <Widget>[
-                                        Icon(Icons.star_border),
-                                        Text("收藏")
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                //职位
-                                Row(
-                                  children: <Widget>[
-                                    Text("中银研究有限公司董事长")
-                                  ],
-                                ),
-                                //研究领域
-                                Row(
-                                  children: <Widget>[
-                                    Column(
-                                      children: <Widget>[
-                                        Text("宏观经济"),
-                                        // Text("货币金融"),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Text("货币金融"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Column(
-                                      children: <Widget>[
-                                        Text("宏观经济"),
-                                        // Text("货币金融"),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Text("货币金融"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        )
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child:
-                            //专家头像
-                            Column(
-                          children: <Widget>[
-                            Container(
-                                width: 100,
-                                height: 150,
-                                // decoration: BoxDecoration(
-                                //     // color: Colors.red
-                                // ),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(10),
-                                  child: new Image.asset('images/expert01.jpg',
-                                      fit: BoxFit.cover),
-                                )),
-                          ],
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: //专家信息
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                //收藏
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Text("曹远征"),
-                                    Row(
-                                      children: <Widget>[
-                                        Icon(Icons.star_border),
-                                        Text("收藏")
-                                      ],
-                                    )
-                                  ],
-                                ),
-                                //职位
-                                Row(
-                                  children: <Widget>[
-                                    Text("中银研究有限公司董事长")
-                                  ],
-                                ),
-                                //研究领域
-                                Row(
-                                  children: <Widget>[
-                                    Column(
-                                      children: <Widget>[
-                                        Text("宏观经济"),
-                                        // Text("货币金融"),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Text("货币金融"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: <Widget>[
-                                    Column(
-                                      children: <Widget>[
-                                        Text("宏观经济"),
-                                        // Text("货币金融"),
-                                      ],
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        Text("货币金融"),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          )
-                        )
-                    ],
-                  ),
-                ],
+                children: lists.map<Widget>((ExpertList list){
+                  // ExpertListItem(list:list);
+                  Widget child;
+                  child = ExpertListItem(list:list);
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[child],
+                    // children: <Widget>[Text("aaa")],
+                  );
+                }).toList()
               ),
             ),
           )
@@ -512,6 +281,115 @@ class _ExpertRep extends State<ExpertRepPage> {
   }
 }
 
+
+
+//构建专家list
+class ExpertListItem extends StatelessWidget {
+  const ExpertListItem({Key key, @required this.list})
+      : assert(list != null),
+        super(key: key);
+  final ExpertList list;
+
+  @override
+  Widget build(BuildContext context) {
+    // print(list.field);
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child:
+                //专家头像
+                Column(
+                children: <Widget>[
+                  Container(
+                      width: 100,
+                      height: 150,
+                      // decoration: BoxDecoration(
+                      //     // color: Colors.red
+                      // ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: new Image.asset(list.avatarName,
+                            fit: BoxFit.cover),
+                      )),
+                ],
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: //专家信息
+              Padding(
+                padding: const EdgeInsets.only(left: 8),
+                child: 
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      //收藏
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(list.expertName),
+                          Row(
+                            children: <Widget>[
+                              Icon(Icons.star_border),
+                              Text("收藏")
+                            ],
+                          )
+                        ],
+                      ),
+                      //职位
+                      Row(
+                        children: <Widget>[Text(list.title)],
+                      ),
+                      //研究领域
+                      Row(
+                        children:<Widget>[
+                          Container(
+                            child: ExpertListField(list:list),
+                          )
+                        ],
+                        // children:ExpertListField(list:list),
+                      )
+                    ],
+                  ),
+              )
+          )
+        ],
+      ),
+    );
+  }
+}
+//构建专家研究领域
+class ExpertListField extends StatelessWidget{
+  const ExpertListField({ Key key, @required this.list })
+    : assert(list != null),
+      super(key: key);
+  final ExpertList list;
+  @override
+  Widget build(BuildContext context){
+    // field.
+    // print(field);
+    final List<Widget> children = <Widget>[];
+    list.field.forEach((text)=>{
+      children.add(
+        Column(
+          children:[
+            Padding(padding: const EdgeInsets.only(right: 4),
+              child: Text(text),
+            )
+          ]
+        )
+      )
+    });
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children:children
+    );
+  }
+  
+}
 // 专家之声
 class ExpertVoicePage extends StatefulWidget {
   @override
